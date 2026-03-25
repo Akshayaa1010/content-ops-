@@ -1,0 +1,14 @@
+// .vscode/extensions.json  — VS Code prompts teammates to install these
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.pylance",
+    "ms-python.black-formatter",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens",
+    "rangav.vscode-thunder-client",
+    "Gruntfuggly.todo-tree",
+    "usernamehw.errorlens"
+  ]
+}
