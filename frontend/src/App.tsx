@@ -143,6 +143,7 @@ function App() {
       content_format: 'blog_post',
       target_audience: 'Enterprise Tech',
       tone: 'Professional & Authoritative',
+      target_channels: ['CMS', 'LinkedIn'],
       target_languages: ['de', 'fr', 'ta'],
       gate_mode: 'async_approval',
       source_doc_ids: fd.get('doc_id') ? [fd.get('doc_id')] : []

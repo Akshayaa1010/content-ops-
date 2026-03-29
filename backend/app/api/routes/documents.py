@@ -226,6 +226,19 @@ async def generate_content_endpoint(payload: GenerateRequest, db: AsyncSession =
         await transition(db, job_id, final_state)
 
         print(f"Generation complete. Violations: {total_violations}, Passed: {governance_passed}")
+        
+        # Automatically append LinkedIn post to Google Sheets
+        linkedin_post_content = result.get("linkedin_post", "")
+        if linkedin_post_content:
+            from app.agents.publishing_agent import publish_to_sheets
+            import asyncio
+            print("Automatically appending LinkedIn post to Google Sheets...")
+            try:
+                sheet_result = await asyncio.to_thread(publish_to_sheets, linkedin_post_content)
+                print(f"Google Sheets append result: {sheet_result}")
+            except Exception as e:
+                print(f"Error appending to Google Sheets natively: {e}")
+
         result["governance_status"] = "passed" if governance_passed else "failed"
         result["governance_message"] = governance_message
         result["job_id"] = job_id

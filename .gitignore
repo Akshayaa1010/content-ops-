@@ -1,18 +1,27 @@
-backend/.env
-backend/.venv/
+# Environments
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# Frontend
 frontend/node_modules/
-backend/__pycache__/
-backend/*.pyc
-backend/.pytest_cache/
-**/.venv/
-**/.DS_Store
+frontend/dist/
+
+# Project specific
 backend/tmp_uploads/
 patch_pipeline.py
 tmp_lines.txt
 celery_log.txt
-
 content-ops-project*.json
-*.env
-venv/
-.venv/
-

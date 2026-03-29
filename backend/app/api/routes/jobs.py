@@ -79,7 +79,27 @@ async def approve_job(job_id: str, db: AsyncSession = Depends(get_db)):
         # Trigger publishing task with channels from brief or default to LinkedIn
         channels = job.brief.get("target_channels") or ["LinkedIn"]
         publish_job_task.delay(job_id, channels)
-        
+
+        # ── Analytics: auto-generate metrics after publishing ──────────────
+        try:
+            from app.api.routes.analytics import store_metrics_for_job
+            draft = job.draft or {}
+            content_text = (
+                draft.get("linkedin_post")
+                or draft.get("text")
+                or job.brief.get("topic", "")
+            )
+            metrics = await store_metrics_for_job(db, job_id, content_text)
+            print(
+                f"Analytics metrics stored for job {job_id} | "
+                f"likes={metrics['likes']} comments={metrics['comments']} "
+                f"shares={metrics['shares']} score={metrics['engagement_score']}"
+            )
+        except Exception as analytics_err:
+            # Non-fatal — never block approval due to analytics failure
+            print(f"Analytics generation error (non-fatal): {analytics_err}")
+        # ──────────────────────────────────────────────────────────────────
+
         return {"status": "approved", "message": f"Job {job_id} approved and sent for publishing."}
     except Exception as e:
         print(f"Approval error for job {job_id}: {e}")

@@ -60,3 +60,22 @@ class PublishedContent(Base):
     published_at = Column(DateTime(timezone=True), server_default=func.now())
     performance_score = Column(Float, nullable=True)
     raw_metrics = Column(JSON, nullable=True)
+
+class ContentMetrics(Base):
+    """
+    Stores simulated (or real) engagement metrics for a published content item.
+    content_id maps to ContentJob.id — the metrics are linked per-job.
+    When real social media API integration is added, replace the simulation
+    values here with live API results without changing the schema.
+    """
+    __tablename__ = "content_metrics"
+    id               = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    content_id       = Column(UUID(as_uuid=True), ForeignKey("content_jobs.id", ondelete="CASCADE"),
+                              nullable=False, index=True)
+    likes            = Column(Integer, default=0, nullable=False)
+    comments         = Column(Integer, default=0, nullable=False)
+    shares           = Column(Integer, default=0, nullable=False)
+    engagement_score = Column(Integer, default=0, nullable=False)
+    content_length   = Column(Integer, default=0, nullable=True)
+    source           = Column(String(50), default="simulation", nullable=False)
+    created_at       = Column(DateTime(timezone=True), server_default=func.now())

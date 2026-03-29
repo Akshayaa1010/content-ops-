@@ -181,8 +181,8 @@ async def orchestrate_job(job_id: str):
 
 @celery_app.task
 def publish_job_task(job_id: str, channels: list[str]):
-    loop = asyncio.get_event_loop()
-    return loop.run_until_complete(run_publish(job_id, channels))
+    import asyncio
+    return asyncio.run(run_publish(job_id, channels))
 
 async def run_publish(job_id: str, channels: list[str]):
     from app.agents.distribution_agent import publish_content
