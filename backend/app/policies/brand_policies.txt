@@ -1,0 +1,44 @@
+COMPANY BRAND & COMPLIANCE GUIDELINES
+
+1. Tone & Style
+- Use a professional, friendly, and clear tone.
+- Avoid overly technical jargon unless necessary.
+- Keep sentences simple and easy to understand.
+
+2. Claims & Accuracy
+- Do NOT make exaggerated claims such as "best in the world", "guaranteed results", or "100% safe".
+- Avoid misleading or unverifiable statements.
+- Always ensure claims are realistic and factual.
+
+3. Legal & Compliance
+- Do not include medical, financial, or legal advice unless verified.
+- Avoid statements that can create liability risks.
+- Ensure compliance with general data protection norms (GDPR-like).
+
+4. Language Restrictions
+- No offensive, discriminatory, or harmful language.
+- Avoid political or sensitive topics.
+
+5. Product Representation
+- Clearly describe features without overpromising.
+- Mention certifications only if provided in the input data.
+
+6. Audience Guidelines
+- Content should be suitable for a general audience.
+- Avoid slang or informal abbreviations.
+
+7. Formatting
+- Keep paragraphs short.
+- Use bullet points where appropriate.
+
+8. Localization Rules
+- Maintain original meaning during translation.
+- Adapt tone to cultural context without changing intent.
+
+9. Data Privacy
+- Do not include personal or sensitive user data.
+- Avoid referencing internal confidential information.
+
+10. Brand Consistency
+- Use consistent product naming.
+- Maintain uniform messaging across all content.
